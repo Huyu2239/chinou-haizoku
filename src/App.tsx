@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import './App.css'
 
 import LoginPage from './feature/auth/components/LoginPage'
-import ResultPage from './feature/auth/components/ResultPage';
 
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
@@ -32,7 +31,6 @@ function App() {
     <>
       <MsalProvider instance={msalInstance}>
         <LoginPage />
-        <ResultPage />
       </MsalProvider>
     </>
   )

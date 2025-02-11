@@ -3,6 +3,8 @@ import Cookies from "js-cookie";
 import { useAuth } from "../useAuth";
 import { InteractionStatus } from "@azure/msal-browser";
 
+import ResultPage from './ResultPage';
+
 const LoginPage = () => {
 	const [isCollegeUser, setIsCollegeUser] = useState(false);
 	const { login, fetchUserData, inProgress } = useAuth();
@@ -38,7 +40,10 @@ const LoginPage = () => {
 	}, [inProgress, fetchUserData]);
 
 	if (isCollegeUser) {
-		return <div>Welcome to the college portal!</div>;
+		return <div>
+			Welcome to the college portal!
+			<ResultPage />
+		</div>;
 	} else {
 		return <div>Sorry, you are not authorized to access this portal.<button onClick={login}>Login</button></div>;
 	}

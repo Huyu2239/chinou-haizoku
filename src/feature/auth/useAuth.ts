@@ -49,6 +49,11 @@ export const useAuth = () => {
         console.warn("User does not belong to the required organization.");
         return null;
       }
+      if (!userData.mail.startsWith("h")) {
+        console.log("User authenticated:", userData.mail);
+        console.warn("User is not grade 3.");
+        return null;
+      }
 
       // success
       const userTokenResponse = await fetch(import.meta.env.VITE_BACKEND_URL + "register?email=" + userData.mail.replace("@", "%40"), {
