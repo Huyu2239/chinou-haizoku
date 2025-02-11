@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+
 import './App.css'
 
 import LoginPage from './feature/auth/components/LoginPage'
@@ -11,9 +11,7 @@ import { msalConfig } from "./feature/auth/authConfig";
 
 const msalInstance = new PublicClientApplication(msalConfig);
 
-
-function App() {
-  // const [count, setCount] = useState(0)
+const Index = () => {
   const [isMsalReady, setIsMsalReady] = useState(false);
 
   useEffect(() => {
@@ -23,9 +21,7 @@ function App() {
     };
     initMsal();
   }, []);
-
   if (!isMsalReady) return <div>Loading...</div>;
-
 
   return (
     <>
@@ -33,6 +29,21 @@ function App() {
         <LoginPage />
       </MsalProvider>
     </>
+  )
+}
+
+
+
+function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path="/" element={<Index />} />
+      </Route>
+    )
+  );
+  return (
+    <RouterProvider router={router} />
   )
 }
 
