@@ -76,7 +76,7 @@ const ResultPage = () => {
   }, []);
 
 
-  if (resultData) {
+  if (Object.keys(resultData).length > 0) {
     return (
       <div>
         {Object.keys(resultData).map((key) => {
@@ -85,7 +85,7 @@ const ResultPage = () => {
       </div>
   );
   } else {
-    return <div>Sorry...</div>;
+    return <div>ページをリロードして下さい</div>;
   }
 }
 
